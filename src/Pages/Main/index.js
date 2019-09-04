@@ -3,8 +3,10 @@
 import React, { Component } from 'react';
 
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
-import { Container, Form, SubmitButton, List } from './styles';
+import { Link } from 'react-router-dom';
+import { Form, SubmitButton, List } from './styles';
 import api from '../../services/api';
+import Container from '../../components/Container';
 
 export default class Main extends Component {
   state = {
@@ -80,6 +82,9 @@ export default class Main extends Component {
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
+              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                detalhes
+              </Link>
             </li>
           ))}
         </List>
